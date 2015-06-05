@@ -131,7 +131,7 @@ Highlight the nearest corresponding time option as a value is typed into the for
 
 - **useSelect**  
 Convert the input to an HTML `<SELECT>` control. This is ideal for small screen devices, or if you want to prevent the user from entering arbitrary values. This option is not compatible with the following options: ```appendTo```, ```closeOnWindowScroll```, ```disableTouchKeyboard```, ```forceRoundTime```, ```scrollDefaultNow```, ```selectOnBlur```, ```typeAheadHighlight```.  
-*default: false*
+*default: true*
 
 Methods
 -------
@@ -147,8 +147,7 @@ Get the time as an integer, expressed as seconds from 12am.
 Get the time using a Javascript Date object, relative to a Date object (default: today).
 
 	```javascript
-	$('#getTimeExample').timepicker('getTime');
-	$('#getTimeExample').timepicker('getTime', new Date());
+	$('#getTimeExample').timepicker('getTime'[, new Date()]);
 	```
 
 	You can get the time as a string using jQuery's built-in ```val()``` function:
