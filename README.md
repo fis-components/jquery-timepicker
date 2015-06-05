@@ -27,6 +27,10 @@ The defaults for all options are exposed through the ```$.fn.timepicker.defaults
 Options
 -------
 
+- **show2400**  
+Show "24:00" as an option when using 24-hour time format.  
+*default: false*
+
 - **appendTo**  
 Override where the dropdown is appended.  
 Takes either a `string` to use as a selector, a `function` that gets passed the clicked input element as argument or a jquery `object` to use directly.  
@@ -43,10 +47,6 @@ Close the timepicker when the window is scrolled. (Replicates ```<select>``` beh
 - **disableTimeRanges**  
 Disable selection of certain time ranges. Input is an array of time pairs, like ```[['3:00am', '4:30am'], ['5:00pm', '8:00pm']]``. The start of the interval will be disabled but the end won't.
 *default: []*
-
-- **disableTextInput**  
-Disable typing in the timepicker input box; for users to select from list.  
-*default: false*
 
 - **disableTouchKeyboard**  
 Disable the onscreen keyboard for touch devices.  
