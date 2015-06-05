@@ -1,5 +1,5 @@
 {
-    "version": "1.6.10",
+    "version": "1.6.9",
     "repos": "https://github.com/jonthornton/jquery-timepicker.git",
     "name": "jquery-timepicker",
     "main": "jquery.timepicker.js",

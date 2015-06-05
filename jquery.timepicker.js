@@ -1,5 +1,5 @@
 /*!
- * jquery-timepicker v1.6.10 - A jQuery timepicker plugin inspired by Google Calendar. It supports both mouse and keyboard navigation.
+ * jquery-timepicker v1.6.9 - A jQuery timepicker plugin inspired by Google Calendar. It supports both mouse and keyboard navigation.
  * Copyright (c) 2015 Jon Thornton - http://jonthornton.github.com/jquery-timepicker/
  * License: MIT
  */
@@ -121,7 +121,7 @@
                 if (_getTimeValue(self)) {
                     selected = _findRow(self, list, _time2int(_getTimeValue(self)));
                 } else if (settings.scrollDefault) {
-                    selected = _findRow(self, list, settings.scrollDefault());
+                    selected = _findRow(self, list, settings.scrollDefault);
                 }
             }
             if (selected && selected.length) {
@@ -259,19 +259,14 @@
             settings.durationTime = _time2int(settings.durationTime);
         }
         if (settings.scrollDefault == 'now') {
-            settings.scrollDefault = function () {
-                return settings.roundingFunction(_time2int(new Date()), settings);
-            };
-        } else if (typeof settings.scrollDefault != 'function') {
-            if (settings.scrollDefault) {
-                settings.scrollDefault = function () {
-                    return settings.roundingFunction(_time2int(settings.scrollDefault), settings);
-                };
-            }
+            settings.scrollDefault = _time2int(new Date());
+        } else if (settings.scrollDefault) {
+            settings.scrollDefault = _time2int(settings.scrollDefault);
         } else if (settings.minTime) {
-            settings.scrollDefault = function () {
-                return settings.roundingFunction(settings.minTime, settings);
-            };
+            settings.scrollDefault = settings.minTime;
+        }
+        if (settings.scrollDefault) {
+            settings.scrollDefault = settings.roundingFunction(settings.scrollDefault, settings);
         }
         if ($.type(settings.timeFormat) === 'string' && settings.timeFormat.match(/[gh]/)) {
             settings._twelveHourTime = true;
@@ -884,7 +879,7 @@
         var timeInt = hours * 3600 + minutes * 60 + seconds;
         // if no am/pm provided, intelligently guess based on the scrollDefault
         if (!ampm && settings && settings._twelveHourTime && settings.scrollDefault) {
-            var delta = timeInt - settings.scrollDefault();
+            var delta = timeInt - settings.scrollDefault;
             if (delta < 0 && delta >= _ONE_DAY / -2) {
                 timeInt = (timeInt + _ONE_DAY / 2) % _ONE_DAY;
             }
