@@ -1,9 +1,0 @@
-{
-    "version": "1.6.10",
-    "repos": "https://github.com/jonthornton/jquery-timepicker.git",
-    "name": "jquery-timepicker",
-    "main": "jquery.timepicker.js",
-    "dependencies": {
-        "jquery": ">=1.7"
-    }
-}
